@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="1269" y="-238"/>
         </scene>
-        <!--Photo View Controller-->
+        <!--Photo View Controller - Camera-->
         <scene sceneID="sNk-CG-lPg">
             <objects>
                 <viewController id="mLh-rl-CsS" customClass="PhotoViewController" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="QVg-4v-Llx"/>
+                    <tabBarItem key="tabBarItem" title="Camera" id="QVg-4v-Llx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-eZ-0HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
