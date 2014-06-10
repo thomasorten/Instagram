@@ -35,6 +35,11 @@
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
 		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
+		D0B2F3151947A7B600EE05D9 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B2F3141947A7B600EE05D9 /* camera@2x.png */; };
+		D0B2F3171947A7C100EE05D9 /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B2F3161947A7C100EE05D9 /* friends@2x.png */; };
+		D0B2F3191947A7C800EE05D9 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B2F3181947A7C800EE05D9 /* inbox@2x.png */; };
+		D0B2F31C1947A85700EE05D9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2F31B1947A85700EE05D9 /* NotificationViewController.m */; };
+		D0B2F31F1947A8DF00EE05D9 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2F31E1947A8DF00EE05D9 /* UserProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +90,13 @@
 		45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		D08CC37F19478E3B009F0DDA /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		D08CC38019478E3B009F0DDA /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		D0B2F3141947A7B600EE05D9 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		D0B2F3161947A7C100EE05D9 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
+		D0B2F3181947A7C800EE05D9 /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
+		D0B2F31A1947A85700EE05D9 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		D0B2F31B1947A85700EE05D9 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		D0B2F31D1947A8DF00EE05D9 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		D0B2F31E1947A8DF00EE05D9 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,10 @@
 				4505FA06193D15330016FC7F /* AppDelegate.h */,
 				4505FA07193D15330016FC7F /* AppDelegate.m */,
 				4505FA09193D15330016FC7F /* Main.storyboard */,
+				D0B2F31D1947A8DF00EE05D9 /* UserProfileViewController.h */,
+				D0B2F31E1947A8DF00EE05D9 /* UserProfileViewController.m */,
+				D0B2F31A1947A85700EE05D9 /* NotificationViewController.h */,
+				D0B2F31B1947A85700EE05D9 /* NotificationViewController.m */,
 				D08CC37F19478E3B009F0DDA /* PhotoViewController.h */,
 				D08CC38019478E3B009F0DDA /* PhotoViewController.m */,
 				45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */,
@@ -186,6 +202,9 @@
 		4505F9FE193D15330016FC7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0B2F3181947A7C800EE05D9 /* inbox@2x.png */,
+				D0B2F3161947A7C100EE05D9 /* friends@2x.png */,
+				D0B2F3141947A7B600EE05D9 /* camera@2x.png */,
 				4505F9FF193D15330016FC7F /* Instagram-Info.plist */,
 				4505FA00193D15330016FC7F /* InfoPlist.strings */,
 				4505FA03193D15330016FC7F /* main.m */,
@@ -290,7 +309,10 @@
 			files = (
 				4505FA10193D15330016FC7F /* Images.xcassets in Resources */,
 				4505FA02193D15330016FC7F /* InfoPlist.strings in Resources */,
+				D0B2F3171947A7C100EE05D9 /* friends@2x.png in Resources */,
 				4505FA0B193D15330016FC7F /* Main.storyboard in Resources */,
+				D0B2F3151947A7B600EE05D9 /* camera@2x.png in Resources */,
+				D0B2F3191947A7C800EE05D9 /* inbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,11 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B2F31C1947A85700EE05D9 /* NotificationViewController.m in Sources */,
 				45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */,
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
 				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
 				D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */,
+				D0B2F31F1947A8DF00EE05D9 /* UserProfileViewController.m in Sources */,
 				4505FA08193D15330016FC7F /* AppDelegate.m in Sources */,
 				4505FA04193D15330016FC7F /* main.m in Sources */,
 			);
