@@ -31,6 +31,7 @@
 		4550E5C61946BB9700A6179D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4550E5C51946BB9700A6179D /* Security.framework */; };
 		4550E5C81946BB9E00A6179D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4550E5C71946BB9D00A6179D /* StoreKit.framework */; };
 		4550E5CA1946BBA600A6179D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4550E5C91946BBA600A6179D /* SystemConfiguration.framework */; };
+		4550E62519478E9000A6179D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550E62419478E9000A6179D /* User.m */; };
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,8 @@
 		4550E5C51946BB9700A6179D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4550E5C71946BB9D00A6179D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4550E5C91946BBA600A6179D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4550E62319478E9000A6179D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4550E62419478E9000A6179D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		45D74E1A193D2C50005DEEA2 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */,
 				4505FA0C193D15330016FC7F /* ViewController.h */,
 				4505FA0D193D15330016FC7F /* ViewController.m */,
+				4550E62319478E9000A6179D /* User.h */,
+				4550E62419478E9000A6179D /* User.m */,
 				45D74E1A193D2C50005DEEA2 /* PhotoCollectionViewCell.h */,
 				45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */,
 				4505FA0F193D15330016FC7F /* Images.xcassets */,
@@ -301,6 +306,7 @@
 			files = (
 				45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */,
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
+				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
 				4505FA08193D15330016FC7F /* AppDelegate.m in Sources */,
 				4505FA04193D15330016FC7F /* main.m in Sources */,
