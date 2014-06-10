@@ -15,5 +15,5 @@
 
 @property NSString *email;
 @property PFFile *profilePhoto;
-
+@property NSString *userName;
 @end
