@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2F668EC4-63CF-4624-8476-DE23A43979F4</string>
+	<string>AB52980F-3EBB-4D0E-B142-09289772CFBF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Instagram</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4E797D12-C025-40AA-9661-EB5980C3AF0A</key>
-		<string>ssh://github.com/thomasorten/FavoritePhotos.git</string>
+		<key>A21DE160-CF3E-4841-A757-E3897159CF2F</key>
+		<string>https://github.com/thomasorten/Instagram.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Instagram.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4E797D12-C025-40AA-9661-EB5980C3AF0A</key>
+		<key>A21DE160-CF3E-4841-A757-E3897159CF2F</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/thomasorten/FavoritePhotos.git</string>
+	<string>https://github.com/thomasorten/Instagram.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4E797D12-C025-40AA-9661-EB5980C3AF0A</string>
+	<string>A21DE160-CF3E-4841-A757-E3897159CF2F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4E797D12-C025-40AA-9661-EB5980C3AF0A</string>
+			<string>A21DE160-CF3E-4841-A757-E3897159CF2F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Instagram</string>
 		</dict>

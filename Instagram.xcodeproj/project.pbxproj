@@ -34,6 +34,7 @@
 		4550E62519478E9000A6179D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550E62419478E9000A6179D /* User.m */; };
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
+		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		D08CC37F19478E3B009F0DDA /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		D08CC38019478E3B009F0DDA /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				4505FA06193D15330016FC7F /* AppDelegate.h */,
 				4505FA07193D15330016FC7F /* AppDelegate.m */,
 				4505FA09193D15330016FC7F /* Main.storyboard */,
+				D08CC37F19478E3B009F0DDA /* PhotoViewController.h */,
+				D08CC38019478E3B009F0DDA /* PhotoViewController.m */,
 				45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */,
 				45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */,
 				4505FA0C193D15330016FC7F /* ViewController.h */,
@@ -308,6 +313,7 @@
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
 				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
+				D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */,
 				4505FA08193D15330016FC7F /* AppDelegate.m in Sources */,
 				4505FA04193D15330016FC7F /* main.m in Sources */,
 			);
