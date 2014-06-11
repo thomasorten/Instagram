@@ -24,32 +24,6 @@
     [super viewDidLoad];
 }
 
-- (void)load
-{
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        if (!self.imagesArray)
-        {
-            self.imagesArray = [NSMutableArray array];
-        }
-        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            for (PFObject *object in objects) {
-                PFFile *userImageFile = object[@"photo"];
-                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        [self.imagesArray addObject:image];
-                        [self.myFavoritesCollectionView reloadData];
-                    }
-                }];
-            }
-        }];
-    } else {
-
-    }
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.imagesArray.count;
@@ -62,10 +36,55 @@
     return cell;
 }
 
+- (void)commentOnPhoto:(NSString *)photoId
+{
+    PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+    comment[@"content"] = @"This is awesome";
+    comment[@"user"] = [PFUser currentUser];
+    [comment save];
+
+    PFObject *currentImage = [PFObject objectWithoutDataWithClassName:@"Photo" objectId:photoId];
+    PFRelation *comments = [currentImage relationforKey:@"comments"];
+    [comments addObject:comment];
+    [currentImage saveInBackground];
+}
+
+- (void)followUser:(NSString *)username
+{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:username];
+    PFUser *followUser = [[query findObjects] firstObject];
+
+    PFUser *currentUser = [PFUser currentUser];
+    PFRelation *follow = [currentUser relationforKey:@"following"];
+    [follow addObject:followUser];
+    [currentUser saveInBackground];
+}
+
+- (void)unFollowUser:(NSString *)username
+{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:username];
+    PFUser *followUser = [[query findObjects] firstObject];
+
+    PFUser *currentUser = [PFUser currentUser];
+    PFRelation *follow = [currentUser relationforKey:@"following"];
+    [follow removeObject:followUser];
+    [currentUser saveInBackground];
+}
+
+- (void)likePhoto:(NSString *)photoId
+{
+    PFObject *currentImage = [PFObject objectWithoutDataWithClassName:@"Photo" objectId:photoId];
+    PFRelation *likes = [currentImage relationforKey:@"likes"];
+    [likes addObject:[PFUser currentUser]];
+    [currentImage saveInBackground];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self loginUser:@"user1" password:@"password"];
-    //[self signupUser:@"user5" password:@"password" email:@"user5@email.com"];
+    [self loginUser:@"user3" password:@"password"];
+//[self signupUser:@"user5" password:@"password" email:@"user5@email.com"];
 
 //    PFUser *user = [PFUser currentUser];
 //    PFObject *photo = [PFObject objectWithClassName:@"Photo"];
@@ -75,23 +94,64 @@
     [self.myFavoritesCollectionView reloadData];
 }
 
-- (void)loadUserPhotos
+- (void)loadPhotos:(PFUser *)user
 {
-    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
     [query whereKey:@"user" equalTo:user];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
         for (PFObject *object in photos) {
-            PFFile *userImageFile = object[@"photo"];
-            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                if (!error) {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    [self.imagesArray addObject:image];
-                    [self.myFavoritesCollectionView reloadData];
-                }
-            }];
+            if (object[@"photo"]) {
+                PFFile *userImageFile = object[@"photo"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [self.imagesArray addObject:image];
+                        [self.myFavoritesCollectionView reloadData];
+                    }
+                }];
+            }
+            if (object[@"comments"]) {
+                PFRelation *commentsRelation = [object relationForKey:@"comments"];
+                PFQuery *query = [commentsRelation query];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                    for (PFObject *comment in results) {
+                        if (comment[@"content"]) {
+                            NSString *commentString = comment[@"content"];
+                        }
+                    }
+                }];
+            }
+            if (object[@"likes"]) {
+                PFRelation *likesRelation = [object relationForKey:@"likes"];
+                PFQuery *query = [likesRelation query];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                    for (PFUser *likedUser in results) {
+                        if (likedUser[@"username"]) {
+                            NSString *userName = likedUser[@"username"];
+                        }
+                    }
+                }];
+            }
         }
+    }];
+}
+
+- (void)loadFollowing
+{
+    if (self.imagesArray == nil)
+    {
+        self.imagesArray = [NSMutableArray new];
+    }
+
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"following" equalTo:[PFUser currentUser]];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *following, NSError *error) {
+         for (PFUser *user in following) { // Show followers photos
+             [self loadPhotos:user];
+         }
+         [self loadPhotos:[PFUser currentUser]]; // And my own photos
     }];
 }
 
@@ -100,8 +160,7 @@
     [PFUser logInWithUsernameInBackground:username password:password
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
-                                            [self load];
-                                            //[self loadUserPhotos];
+                                            [self loadFollowing];
                                         }
                                     }];
 }
