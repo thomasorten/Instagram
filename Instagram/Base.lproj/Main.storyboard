@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fR0-ZJ-JHu">
-                                <rect key="frame" x="0.0" y="26" width="320" height="542"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="514"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bJV-5k-Bn7">
@@ -54,7 +54,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="ZyB-GB-FRc"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="ZyB-GB-FRc">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="myFavoritesCollectionView" destination="fR0-ZJ-JHu" id="IrG-Yn-8oV"/>
                     </connections>
@@ -76,16 +78,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="QVg-4v-Llx"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera.png" id="QVg-4v-Llx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-eZ-0HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1670" y="-533"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--Notification View Controller - Notifications-->
         <scene sceneID="tgB-P0-tNj">
             <objects>
-                <viewController id="ozI-1o-g21" sceneMemberID="viewController">
+                <viewController id="ozI-1o-g21" customClass="NotificationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Zy-Ee-0pu"/>
                         <viewControllerLayoutGuide type="bottom" id="zBM-xa-mjh"/>
@@ -95,13 +99,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="dit-Fc-GBb"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notificationIcons.png" id="dit-Fc-GBb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRw-b5-ch8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1670" y="170"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--View Controller - Profile-->
         <scene sceneID="EWB-TC-7oS">
             <objects>
                 <viewController id="Zaf-hC-MZE" sceneMemberID="viewController">
@@ -114,7 +120,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kpe-QM-orx"/>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="Profile" image="userProfileIcon.png" id="kpe-QM-orx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oh-b8-29r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +194,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="df5-Km-Y9h"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="df5-Km-Y9h">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="myCollectionView" destination="8nw-9w-dmO" id="ACl-l6-nYZ"/>
                         <outlet property="searchBar" destination="ZJM-Dj-vj3" id="VYQ-nG-r57"/>
@@ -220,8 +230,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" width="102" height="102"/>
+        <image name="camera.png" width="28" height="20"/>
         <image name="checkmark" width="64" height="64"/>
+        <image name="notificationIcons.png" width="22" height="22"/>
+        <image name="userProfileIcon.png" width="33" height="33"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
