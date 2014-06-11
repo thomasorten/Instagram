@@ -178,4 +178,14 @@
     }];
 }
 
+- (IBAction)onCommentButtonPressed:(id)sender
+{
+
+}
+
+- (IBAction)onLikeButtonPressed:(id)sender
+{
+
+}
+
 @end

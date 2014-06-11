@@ -40,6 +40,9 @@
                                                     <state key="normal" image="likeHeartIcon.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onLikeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p8k-ub-vK4"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hug-BR-YhG">
                                                     <rect key="frame" x="17" y="251" width="22" height="22"/>
@@ -47,6 +50,9 @@
                                                     <state key="normal" image="commentIcon.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onCommentButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="teZ-O0-h7v"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2pf-dq-NAH">
                                                     <rect key="frame" x="56" y="229" width="122" height="22"/>
@@ -68,6 +74,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="commentsButton" destination="zYL-EM-3Vg" id="oXK-EM-OT8"/>
+                                            <outlet property="likesButton" destination="2pf-dq-NAH" id="Mgw-Uu-aBI"/>
                                             <outlet property="selectedImageView" destination="BmI-zk-NVw" id="RqU-YE-Zqo"/>
                                         </connections>
                                     </collectionViewCell>
