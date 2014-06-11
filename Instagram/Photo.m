@@ -1,22 +1,20 @@
 //
-//  User.m
+//  Photo.m
 //  Instagram
 //
 //  Created by Thomas Orten on 6/10/14.
 //  Copyright (c) 2014 Orten, Thomas. All rights reserved.
 //
 
-#import "User.h"
+#import "Photo.h"
 
-@implementation User
+@implementation Photo
 
-@dynamic profilePhoto;
-@dynamic userName;
-@dynamic email;
+@dynamic photo;
 
 + (id)parseClassName
 {
-    return @"User";
+    return @"Photo";
 }
 
 @end

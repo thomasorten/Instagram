@@ -7,8 +7,11 @@
 //
 
 #import "PhotoViewController.h"
+#import <Parse/Parse.h>
+#import "FavoritesViewController.h"
 
-@interface PhotoViewController ()
+@interface PhotoViewController () <UITextViewDelegate>
+
 
 @end
 
@@ -26,24 +29,111 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self loginUser:@"user1" password:@"password"];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)loginUser:(NSString *)username password:(NSString *)password
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [PFUser logInWithUsernameInBackground:username password:password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            [self load];
+                                            //[self loadUserPhotos];
+                                        }
+                                    }];
 }
-*/
 
+- (void)load
+{
+    FavoritesViewController *fc = [[FavoritesViewController alloc] init];
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        if (!fc.imagesArray)
+        {
+            fc.imagesArray = [NSMutableArray array];
+        }
+        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            for (PFObject *object in objects) {
+                PFFile *userImageFile = object[@"photo"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [fc.imagesArray addObject:image];
+                        [fc.myFavoritesCollectionView reloadData];
+                    }
+                }];
+            }
+        }];
+    } else {
+
+    }
+}
+
+- (IBAction)doneWithCaption:(id)sender
+{
+    [self.textView resignFirstResponder];
+}
+
+- (IBAction)clearCaption:(id)sender
+{
+    self.textView.text = @"";
+}
+
+- (IBAction)upload:(id)sender
+{
+
+    NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+    //userPhoto[@"theCaption"] = self.textView.text;
+    userPhoto[@"photo"] = imageFile;
+    [userPhoto saveInBackground];
+
+
+    
+}
+
+#pragma mark - Methods and Actions according to taking photos
+
+- (IBAction)selectPhoto:(id)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (IBAction)takePhoto:(id)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *pickedImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = pickedImage;
+
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FavoritesViewController : UIViewController
-
+@property NSMutableArray *imagesArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *myFavoritesCollectionView;
 @end
