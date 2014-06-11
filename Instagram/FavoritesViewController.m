@@ -8,9 +8,12 @@
 
 #import "FavoritesViewController.h"
 #import "PhotoCollectionViewCell.h"
+#import "Photo.h"
+#import "User.h"
+#import <Parse/Parse.h>
 
 @interface FavoritesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate>
-@property NSMutableArray *favoritesArray;
+@property NSMutableArray *imagesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *myFavoritesCollectionView;
 @end
 
@@ -23,39 +26,98 @@
 
 - (void)load
 {
-    NSURL *imagelist = [[self documentsDirectory] URLByAppendingPathComponent:@"images.plist"];
-    self.favoritesArray = [NSMutableArray arrayWithContentsOfURL:imagelist];
-    if (!self.favoritesArray)
-    {
-        self.favoritesArray = [NSMutableArray array];
-    }
-}
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        if (!self.imagesArray)
+        {
+            self.imagesArray = [NSMutableArray array];
+        }
+        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            for (PFObject *object in objects) {
+                PFFile *userImageFile = object[@"photo"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [self.imagesArray addObject:image];
+                        [self.myFavoritesCollectionView reloadData];
+                    }
+                }];
+            }
+        }];
+    } else {
 
-- (NSURL *)documentsDirectory
-{
-    return [[[NSFileManager defaultManager]URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask]firstObject];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.favoritesArray.count;
+    return self.imagesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyFavoritesCell" forIndexPath:indexPath];
-    NSURL *url = [NSURL URLWithString:[self.favoritesArray objectAtIndex:indexPath.row]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        cell.selectedImageView.image = [UIImage imageWithData:data];
-    }];
+    cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self load];
+    [self loginUser:@"user1" password:@"password"];
+    //[self signupUser:@"user5" password:@"password" email:@"user5@email.com"];
+
+//    PFUser *user = [PFUser currentUser];
+//    PFObject *photo = [PFObject objectWithClassName:@"Photo"];
+//    photo[@"user"] = user;
+//    [photo saveInBackground];
+
     [self.myFavoritesCollectionView reloadData];
+}
+
+- (void)loadUserPhotos
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+    [query whereKey:@"user" equalTo:user];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
+        for (PFObject *object in photos) {
+            PFFile *userImageFile = object[@"photo"];
+            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    [self.imagesArray addObject:image];
+                    [self.myFavoritesCollectionView reloadData];
+                }
+            }];
+        }
+    }];
+}
+
+- (void)loginUser:(NSString *)username password:(NSString *)password
+{
+    [PFUser logInWithUsernameInBackground:username password:password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            [self load];
+                                            //[self loadUserPhotos];
+                                        }
+                                    }];
+}
+
+- (void)signupUser:(NSString *)username password:(NSString *)password email:(NSString *)email
+{
+    PFUser *user = [PFUser user];
+    user.username = username;
+    user.password = password;
+    user.email = email;
+
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self loginUser:user.username password:user.password];
+        }
+    }];
 }
 
 @end

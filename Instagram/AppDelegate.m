@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "Photo.h"
+#import "User.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Photo registerSubclass];
     [Parse setApplicationId:@"jaMpgJZ3lqYmEysLNBuQYuUZs2oKLCRu6aiLq9U7"
                   clientKey:@"Ix3WQeFj1Lmz3SJD8iHrJnjKMbsNVCnjTy30JAvr"];
     return YES;
