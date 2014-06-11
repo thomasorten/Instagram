@@ -96,7 +96,8 @@
     [userPhoto saveInBackground];
 
 
-    
+    self.imageView.image = nil;
+    self.textView.text = @"Type a caption here";
 }
 
 #pragma mark - Methods and Actions according to taking photos
