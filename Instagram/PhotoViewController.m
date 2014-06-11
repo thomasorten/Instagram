@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import <Parse/Parse.h>
+#import "FavoritesViewController.h"
 
 @interface PhotoViewController () <UITextViewDelegate>
 
@@ -28,12 +29,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self loginUser:@"user1" password:@"password"];
+}
+
+- (void)loginUser:(NSString *)username password:(NSString *)password
+{
+    [PFUser logInWithUsernameInBackground:username password:password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            [self load];
+                                            //[self loadUserPhotos];
+                                        }
+                                    }];
+}
+
+- (void)load
+{
+    FavoritesViewController *fc = [[FavoritesViewController alloc] init];
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        if (!fc.imagesArray)
+        {
+            fc.imagesArray = [NSMutableArray array];
+        }
+        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            for (PFObject *object in objects) {
+                PFFile *userImageFile = object[@"photo"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [fc.imagesArray addObject:image];
+                        [fc.myFavoritesCollectionView reloadData];
+                    }
+                }];
+            }
+        }];
+    } else {
+
+    }
 }
 
 - (IBAction)doneWithCaption:(id)sender
@@ -51,9 +90,9 @@
 
     NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
     PFFile *imageFile = [PFFile fileWithData:imageData];
-    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-    userPhoto[@"theCaption"] = self.textView.text;
-    userPhoto[@"postedPhoto"] = imageFile;
+    PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+    //userPhoto[@"theCaption"] = self.textView.text;
+    userPhoto[@"photo"] = imageFile;
     [userPhoto saveInBackground];
 
 

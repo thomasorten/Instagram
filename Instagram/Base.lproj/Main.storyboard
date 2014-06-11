@@ -30,7 +30,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BmI-zk-NVw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BmI-zk-NVw">
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="220"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -53,6 +53,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="ZyB-GB-FRc">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="LcG-ao-gXr"/>
                     <connections>
                         <outlet property="myFavoritesCollectionView" destination="fR0-ZJ-JHu" id="IrG-Yn-8oV"/>
                     </connections>
@@ -102,6 +103,7 @@
                                 <state key="normal" title="Upload Photo"/>
                                 <connections>
                                     <action selector="upload:" destination="mLh-rl-CsS" eventType="touchUpInside" id="WCu-si-3Gr"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" id="fGo-mi-4XW"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="&quot;Type a caption here&quot;" id="Fuz-1p-NPj">
@@ -141,7 +143,6 @@
                         <outlet property="imageView" destination="xsj-Tc-i8S" id="S8S-ie-pxw"/>
                         <outlet property="textView" destination="Fuz-1p-NPj" id="dwZ-dh-WXq"/>
                     </connections>
->>>>>>> Philipe
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-eZ-0HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,10 +152,6 @@
         <scene sceneID="tgB-P0-tNj">
             <objects>
                 <viewController id="ozI-1o-g21" customClass="NotificationViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Zy-Ee-0pu"/>
-                        <viewControllerLayoutGuide type="bottom" id="zBM-xa-mjh"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3yV-jN-MpN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -293,4 +290,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="fGo-mi-4XW"/>
+    </inferredMetricsTieBreakers>
 </document>
