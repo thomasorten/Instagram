@@ -103,7 +103,6 @@
                                 <state key="normal" title="Upload Photo"/>
                                 <connections>
                                     <action selector="upload:" destination="mLh-rl-CsS" eventType="touchUpInside" id="WCu-si-3Gr"/>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" id="fGo-mi-4XW"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="&quot;Type a caption here&quot;" id="Fuz-1p-NPj">
@@ -290,7 +289,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="fGo-mi-4XW"/>
-    </inferredMetricsTieBreakers>
 </document>
