@@ -11,12 +11,14 @@
 
 #define kLatestUpdatekey @"Latest Update"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property NSMutableArray *imagesArray;
 @property NSMutableArray *favoritesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *myCollectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property NSMutableArray *selectedCellIndexes;
+@property NSArray *searchResults;
 @end
 
 @implementation ViewController
@@ -24,13 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imagesArray = [[NSMutableArray alloc] init];
     self.favoritesArray = [[NSMutableArray alloc] init];
     self.selectedCellIndexes = [[NSMutableArray alloc] init];
+    self.myTableView.hidden = YES;
 }
 
 - (void)getPhotosByTerm:(NSString *)searchTerm
 {
+    self.imagesArray = [[NSMutableArray alloc] init];
+
     NSString *searchString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9401ce3d1573537ff059cca44fe122f4&text=%@&content_type=1&extras=url_m&per_page=10&format=json&nojsoncallback=1", searchTerm];
     NSURL *url = [NSURL URLWithString:searchString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -40,8 +44,9 @@
         for (NSDictionary *imageDictionary in images) {
             [self.imagesArray addObject:[imageDictionary objectForKey:@"url_m"]];
         }
-        [self.myCollectionView reloadData];
+        [self.myTableView reloadData];
     }];
+
 }
 
 - (void)save
@@ -100,6 +105,41 @@
 {
     [self getPhotosByTerm:searchBar.text];
     [searchBar resignFirstResponder];
+
+    //self.myTableView.hidden = YES;
+   //self.myCollectionView.hidden = NO;
+}
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+
+
+    self.myCollectionView.hidden = YES;
+    self.myTableView.hidden = NO;
 }
 
+
+
+#pragma mark - UITableView Methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.imagesArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
+    cell.alpha = 1.0;
+    NSURL *url = [NSURL URLWithString:[self.imagesArray objectAtIndex:indexPath.row]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        cell.imageView.image = [UIImage imageWithData:data];
+    }];
+
+    if ([self.favoritesArray containsObject:[self.imagesArray objectAtIndex:indexPath.row]]) {
+        cell.imageView.alpha = 0.5;
+    } else {
+        cell.imageView.alpha = 1.0;
+    }
+    return cell;
+}
 @end
