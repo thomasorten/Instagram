@@ -13,6 +13,7 @@
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property NSMutableArray *imagesArray;
+@property NSMutableArray *arrayWithCollectionImages;
 @property NSMutableArray *favoritesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *myCollectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -26,9 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.imagesArray = [[NSMutableArray alloc] init];
     self.favoritesArray = [[NSMutableArray alloc] init];
     self.selectedCellIndexes = [[NSMutableArray alloc] init];
     self.myTableView.hidden = YES;
+
+    [self loadPhotosInitially];
 }
 
 - (void)getPhotosByTerm:(NSString *)searchTerm
@@ -45,8 +49,29 @@
             [self.imagesArray addObject:[imageDictionary objectForKey:@"url_m"]];
         }
         [self.myTableView reloadData];
+
     }];
 
+}
+
+- (void)loadPhotosInitially
+{
+    self.imagesArray = [[NSMutableArray alloc] init];
+
+    NSString *searchTerm = @"Dogs";
+    NSString *searchString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9401ce3d1573537ff059cca44fe122f4&text=%@&content_type=1&extras=url_m&per_page=10&format=json&nojsoncallback=1", searchTerm];
+    NSURL *url = [NSURL URLWithString:searchString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&connectionError];
+        NSArray *images = [[json objectForKey:@"photos"] objectForKey:@"photo"];
+        for (NSDictionary *imageDictionary in images) {
+            [self.imagesArray addObject:[imageDictionary objectForKey:@"url_m"]];
+        }
+        [self.myCollectionView reloadData];
+
+    }];
+    
 }
 
 - (void)save
@@ -120,6 +145,10 @@
 
 
 #pragma mark - UITableView Methods
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.imagesArray.count;
@@ -133,6 +162,8 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         cell.imageView.image = [UIImage imageWithData:data];
+        //below line fixed the whole bug issue in not displaying the images when reloading.
+        [cell setNeedsLayout];
     }];
 
     if ([self.favoritesArray containsObject:[self.imagesArray objectAtIndex:indexPath.row]]) {
