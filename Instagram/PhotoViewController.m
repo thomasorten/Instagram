@@ -7,8 +7,10 @@
 //
 
 #import "PhotoViewController.h"
+#import <Parse/Parse.h>
 
-@interface PhotoViewController ()
+@interface PhotoViewController () <UITextViewDelegate>
+
 
 @end
 
@@ -26,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +36,65 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)doneWithCaption:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self.textView resignFirstResponder];
 }
-*/
 
+- (IBAction)clearCaption:(id)sender
+{
+    self.textView.text = @"";
+}
+
+- (IBAction)upload:(id)sender
+{
+
+    NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+    userPhoto[@"theCaption"] = self.textView.text;
+    userPhoto[@"postedPhoto"] = imageFile;
+    [userPhoto saveInBackground];
+
+
+    
+}
+
+#pragma mark - Methods and Actions according to taking photos
+
+- (IBAction)selectPhoto:(id)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (IBAction)takePhoto:(id)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *pickedImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = pickedImage;
+
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
 @end

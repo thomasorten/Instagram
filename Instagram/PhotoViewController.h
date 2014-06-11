@@ -8,6 +8,17 @@
 
 #import "ViewController.h"
 
-@interface PhotoViewController : ViewController
+@interface PhotoViewController : ViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+- (IBAction)selectPhoto:(id)sender;
+- (IBAction)takePhoto:(id)sender;
+- (IBAction)doneWithCaption:(id)sender;
+- (IBAction)clearCaption:(id)sender;
+- (IBAction)upload:(id)sender;
+
+@property UIImage *image;
+
+
 
 @end
