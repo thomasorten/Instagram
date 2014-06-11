@@ -13,8 +13,7 @@
 #import <Parse/Parse.h>
 
 @interface FavoritesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate>
-@property NSMutableArray *imagesArray;
-@property (weak, nonatomic) IBOutlet UICollectionView *myFavoritesCollectionView;
+
 @end
 
 @implementation FavoritesViewController
