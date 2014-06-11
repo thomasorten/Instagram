@@ -1,5 +1,5 @@
 //
-//  User.h
+//  Photo.h
 //  Instagram
 //
 //  Created by Thomas Orten on 6/10/14.
@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-@interface User : PFObject <PFSubclassing>
+@interface Photo : PFObject <PFSubclassing>
 
 + (id)parseClassName;
 
-@property NSString *email;
-@property PFFile *profilePhoto;
-@property NSString *userName;
+@property PFFile *photo;
 
 @end
+
