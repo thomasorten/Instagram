@@ -78,8 +78,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera.png" id="QVg-4v-Llx">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="cameraIconInsta.png" id="QVg-4v-Llx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-eZ-0HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,7 +230,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera.png" width="28" height="20"/>
+        <image name="cameraIconInsta.png" width="22" height="22"/>
         <image name="checkmark" width="64" height="64"/>
         <image name="notificationIcons.png" width="22" height="22"/>
         <image name="userProfileIcon.png" width="33" height="33"/>
