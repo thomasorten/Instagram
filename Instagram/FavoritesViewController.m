@@ -37,7 +37,7 @@
     NSArray *comments = [self.imagesArray objectAtIndex:indexPath.row][@"comments"];
     NSArray *likes = [self.imagesArray objectAtIndex:indexPath.row][@"likes"];
     NSString *photoId = [self.imagesArray objectAtIndex:indexPath.row][@"id"];
-    NSString *firstComment = @"0";
+    NSString *firstComment = @"...";
 
     if (comments.count > 0) {
         firstComment = [comments firstObject];

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface CommentViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *commentTextField;
 
 @end
 
@@ -21,7 +22,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)commentOnPhoto
+- (IBAction)onCommentPressed:(id)sender
 {
     PFObject *comment = [PFObject objectWithClassName:@"Comment"];
     comment[@"content"] = @"This is awesome";
@@ -40,6 +41,11 @@
             }];
         }
     }];
+}
+
+- (IBAction)onCancelPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
