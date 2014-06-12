@@ -62,7 +62,9 @@
     NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
     PFFile *imageFile = [PFFile fileWithData:imageData];
     PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+
     //userPhoto[@"theCaption"] = self.textView.text;
+    userPhoto[@"user"] = [PFUser currentUser];
     userPhoto[@"photo"] = imageFile;
     [userPhoto saveInBackground];
 

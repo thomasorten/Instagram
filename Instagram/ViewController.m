@@ -37,9 +37,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self loadPhotosInitially];
+    [self loginUser:@"user1" password:@"password"];
+    self.initialArray = [NSMutableArray new];
 
 }
+- (void)loginUser:(NSString *)username password:(NSString *)password
+{
+    [PFUser logInWithUsernameInBackground:username password:password
+                                    block:^(PFUser *user, NSError *error) {
+
+                                    }];
+}
+
 - (void)getPhotosByTerm:(NSString *)searchTerm
 {
     self.searchResults = [NSMutableArray new];
@@ -88,7 +97,9 @@
             if (object[@"photo"] ) {
             PFFile *userImageFile = object[@"photo"];
             [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                [self.initialArray addObject:[UIImage imageWithData:imageData]];
+                if (imageData) {
+                    [self.initialArray addObject:[UIImage imageWithData:imageData]];
+                }
 
             }];
                 [self.myCollectionView reloadData];
@@ -180,6 +191,7 @@
 #pragma mark - UITableView Methods
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -190,7 +202,8 @@
 - (IBAction)onSearchReload:(id)sender
 {
     self.myTableView.hidden = YES;
-    [self.myCollectionView reloadData];
+    [self loadPhotosInitially];
+    NSLog(@"Pressed");
 
 }
 
