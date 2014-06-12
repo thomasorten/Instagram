@@ -38,6 +38,14 @@
 		45EA5D31194952EF00328F3D /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D30194952EF00328F3D /* MyButton.m */; };
 		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
 		D0A64F851948218100762CA8 /* cameraIconInsta.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A64F841948218100762CA8 /* cameraIconInsta.png */; };
+		D0A6D176194982470075EEE1 /* profilePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D175194982470075EEE1 /* profilePhoto.png */; };
+		D0A6D178194982F40075EEE1 /* photoCollectionGridView.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D177194982F40075EEE1 /* photoCollectionGridView.png */; };
+		D0A6D17A1949838E0075EEE1 /* photoCollectionFeedView.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D1791949838E0075EEE1 /* photoCollectionFeedView.png */; };
+		D0A6D17C194984040075EEE1 /* photoLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D17B194984040075EEE1 /* photoLocation.png */; };
+		D0A6D17E194985D00075EEE1 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D17D194985D00075EEE1 /* settingsIcon.png */; };
+		D0A6D1801949860C0075EEE1 /* myTaggedPhotos.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6D17F1949860C0075EEE1 /* myTaggedPhotos.png */; };
+		D0A6D182194988E90075EEE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6D181194988E90075EEE1 /* MapKit.framework */; };
+		D0A6D1851949890B0075EEE1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6D1841949890B0075EEE1 /* MapViewController.m */; };
 		D0B2F3151947A7B600EE05D9 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B2F3141947A7B600EE05D9 /* camera@2x.png */; };
 		D0B2F3171947A7C100EE05D9 /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B2F3161947A7C100EE05D9 /* friends@2x.png */; };
 		D0B2F31C1947A85700EE05D9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2F31B1947A85700EE05D9 /* NotificationViewController.m */; };
@@ -101,6 +109,15 @@
 		D08CC37F19478E3B009F0DDA /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		D08CC38019478E3B009F0DDA /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		D0A64F841948218100762CA8 /* cameraIconInsta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIconInsta.png; sourceTree = "<group>"; };
+		D0A6D175194982470075EEE1 /* profilePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilePhoto.png; sourceTree = "<group>"; };
+		D0A6D177194982F40075EEE1 /* photoCollectionGridView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoCollectionGridView.png; sourceTree = "<group>"; };
+		D0A6D1791949838E0075EEE1 /* photoCollectionFeedView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoCollectionFeedView.png; sourceTree = "<group>"; };
+		D0A6D17B194984040075EEE1 /* photoLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoLocation.png; sourceTree = "<group>"; };
+		D0A6D17D194985D00075EEE1 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		D0A6D17F1949860C0075EEE1 /* myTaggedPhotos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTaggedPhotos.png; sourceTree = "<group>"; };
+		D0A6D181194988E90075EEE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D0A6D1831949890B0075EEE1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../MapViewController.h; sourceTree = "<group>"; };
+		D0A6D1841949890B0075EEE1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../MapViewController.m; sourceTree = "<group>"; };
 		D0B2F3141947A7B600EE05D9 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		D0B2F3161947A7C100EE05D9 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
 		D0B2F31A1947A85700EE05D9 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
@@ -118,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A6D182194988E90075EEE1 /* MapKit.framework in Frameworks */,
 				4550E5CA1946BBA600A6179D /* SystemConfiguration.framework in Frameworks */,
 				4550E5C81946BB9E00A6179D /* StoreKit.framework in Frameworks */,
 				4550E5C61946BB9700A6179D /* Security.framework in Frameworks */,
@@ -169,6 +187,7 @@
 		4505F9F6193D15330016FC7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0A6D181194988E90075EEE1 /* MapKit.framework */,
 				4550E5C91946BBA600A6179D /* SystemConfiguration.framework */,
 				4550E5C71946BB9D00A6179D /* StoreKit.framework */,
 				4550E5C51946BB9700A6179D /* Security.framework */,
@@ -203,6 +222,8 @@
 				45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */,
 				4505FA0C193D15330016FC7F /* ViewController.h */,
 				4505FA0D193D15330016FC7F /* ViewController.m */,
+				D0A6D1831949890B0075EEE1 /* MapViewController.h */,
+				D0A6D1841949890B0075EEE1 /* MapViewController.m */,
 				45EA5D2F194952EF00328F3D /* MyButton.h */,
 				45EA5D30194952EF00328F3D /* MyButton.m */,
 				4550E6261947A31B00A6179D /* Photo.h */,
@@ -220,8 +241,14 @@
 		4505F9FE193D15330016FC7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0A6D175194982470075EEE1 /* profilePhoto.png */,
 				D0B2F32A1948131300EE05D9 /* commentIcon.png */,
+				D0A6D1791949838E0075EEE1 /* photoCollectionFeedView.png */,
 				D0B2F3161947A7C100EE05D9 /* friends@2x.png */,
+				D0A6D17B194984040075EEE1 /* photoLocation.png */,
+				D0A6D17D194985D00075EEE1 /* settingsIcon.png */,
+				D0A6D17F1949860C0075EEE1 /* myTaggedPhotos.png */,
+				D0A6D177194982F40075EEE1 /* photoCollectionGridView.png */,
 				D0B2F32E1948151700EE05D9 /* userProfileIcon.png */,
 				D0B2F3141947A7B600EE05D9 /* camera@2x.png */,
 				D0A64F841948218100762CA8 /* cameraIconInsta.png */,
@@ -333,12 +360,18 @@
 				4505FA02193D15330016FC7F /* InfoPlist.strings in Resources */,
 				D0B2F3291948122300EE05D9 /* notificationIcons.png in Resources */,
 				D0B2F32D1948147200EE05D9 /* likeHeartIcon.png in Resources */,
+				D0A6D1801949860C0075EEE1 /* myTaggedPhotos.png in Resources */,
+				D0A6D176194982470075EEE1 /* profilePhoto.png in Resources */,
+				D0A6D178194982F40075EEE1 /* photoCollectionGridView.png in Resources */,
+				D0A6D17E194985D00075EEE1 /* settingsIcon.png in Resources */,
 				D0B2F32B1948131300EE05D9 /* commentIcon.png in Resources */,
 				D0B2F3171947A7C100EE05D9 /* friends@2x.png in Resources */,
 				4505FA0B193D15330016FC7F /* Main.storyboard in Resources */,
+				D0A6D17A1949838E0075EEE1 /* photoCollectionFeedView.png in Resources */,
 				D0A64F851948218100762CA8 /* cameraIconInsta.png in Resources */,
 				D0B2F32F1948151700EE05D9 /* userProfileIcon.png in Resources */,
 				D0B2F3151947A7B600EE05D9 /* camera@2x.png in Resources */,
+				D0A6D17C194984040075EEE1 /* photoLocation.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +393,7 @@
 				D0B2F31C1947A85700EE05D9 /* NotificationViewController.m in Sources */,
 				45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */,
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
+				D0A6D1851949890B0075EEE1 /* MapViewController.m in Sources */,
 				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
 				4550E6281947A31B00A6179D /* Photo.m in Sources */,
