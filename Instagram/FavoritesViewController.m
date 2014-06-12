@@ -34,24 +34,26 @@
 {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyFavoritesCell" forIndexPath:indexPath];
 
-    NSArray *comments = [self.imagesArray objectAtIndex:indexPath.row][@"comments"];
-    NSArray *likes = [self.imagesArray objectAtIndex:indexPath.row][@"likes"];
-    NSString *photoId = [self.imagesArray objectAtIndex:indexPath.row][@"id"];
-    NSString *firstComment = @"...";
+    if (self.imagesArray.count) {
+        NSArray *comments = [self.imagesArray objectAtIndex:indexPath.row][@"comments"];
+        NSArray *likes = [self.imagesArray objectAtIndex:indexPath.row][@"likes"];
+        NSString *photoId = [self.imagesArray objectAtIndex:indexPath.row][@"id"];
+        NSString *firstComment = @"...";
 
-    if (comments.count > 0) {
-        firstComment = [comments firstObject];
+        if (comments.count > 0) {
+            firstComment = [comments firstObject];
+        }
+
+        cell.profileImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"profilePhoto"];
+        cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"file"];
+        cell.userNameLabel.text = [self.imagesArray objectAtIndex:indexPath.row][@"username"];
+        [cell.commentsButton setTitle:firstComment forState:UIControlStateNormal];
+        [cell.likesButton setTitle:@(likes.count).description forState:UIControlStateNormal];
+        cell.commentThisButton.photoId = photoId;
+        cell.likeThisButton.photoId = photoId;
+        cell.likesButton.photoId = photoId;
+        cell.commentsButton.photoId = photoId;
     }
-
-    cell.profileImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"profilePhoto"];
-    cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"file"];
-    cell.userNameLabel.text = [self.imagesArray objectAtIndex:indexPath.row][@"username"];
-    [cell.commentsButton setTitle:firstComment forState:UIControlStateNormal];
-    [cell.likesButton setTitle:@(likes.count).description forState:UIControlStateNormal];
-    cell.commentThisButton.photoId = photoId;
-    cell.likeThisButton.photoId = photoId;
-    cell.likesButton.photoId = photoId;
-    cell.commentsButton.photoId = photoId;
 
     return cell;
 }

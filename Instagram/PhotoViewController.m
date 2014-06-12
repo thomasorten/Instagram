@@ -41,11 +41,10 @@
 {
     [PFUser logInWithUsernameInBackground:username password:password
                                     block:^(PFUser *user, NSError *error) {
-                                       
+                                        if (user) {
+                                        }
                                     }];
 }
-
-
 
 - (IBAction)doneWithCaption:(id)sender
 {
