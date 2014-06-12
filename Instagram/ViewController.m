@@ -154,6 +154,11 @@
     return self.imagesArray.count;
 }
 
+- (IBAction)onSearchReload:(id)sender
+{
+
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
