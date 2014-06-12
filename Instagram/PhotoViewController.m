@@ -63,14 +63,14 @@
     PFFile *imageFile = [PFFile fileWithData:imageData];
     PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
 
-    //userPhoto[@"theCaption"] = self.textView.text;
+    userPhoto[@"caption"] = self.textView.text;
     userPhoto[@"user"] = [PFUser currentUser];
     userPhoto[@"photo"] = imageFile;
     [userPhoto saveInBackground];
 
 
     self.imageView.image = nil;
-    self.textView.text = @"Type a caption here";
+    self.textView.text = @"Type a caption here....";
 }
 
 #pragma mark - Methods and Actions according to taking photos

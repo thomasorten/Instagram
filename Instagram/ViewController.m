@@ -32,13 +32,14 @@
     self.imagesArray = [[NSMutableArray alloc] init];
     self.favoritesArray = [[NSMutableArray alloc] init];
     self.selectedCellIndexes = [[NSMutableArray alloc] init];
+    self.initialArray = [NSMutableArray new];
+
     self.myTableView.hidden = YES;
 
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [self loginUser:@"user1" password:@"password"];
-    self.initialArray = [NSMutableArray new];
 
 }
 - (void)loginUser:(NSString *)username password:(NSString *)password
