@@ -34,7 +34,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="220"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uFt-Cl-SpL">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uFt-Cl-SpL" customClass="MyButton">
                                                     <rect key="frame" x="17" y="228" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="likeHeartIcon.png">
@@ -44,7 +44,7 @@
                                                         <action selector="onLikeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p8k-ub-vK4"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hug-BR-YhG">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hug-BR-YhG" customClass="MyButton">
                                                     <rect key="frame" x="17" y="251" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="commentIcon.png">

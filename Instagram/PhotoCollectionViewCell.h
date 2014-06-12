@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyButton.h"
 
 @interface PhotoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *theImageView;
 @property (weak, nonatomic) IBOutlet UIButton *checkMarkButton;
-@property (weak, nonatomic) IBOutlet UIButton *likesButton;
-@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
+@property (weak, nonatomic) IBOutlet MyButton *likesButton;
+@property (weak, nonatomic) IBOutlet MyButton *commentsButton;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
+@property NSString *photoId;
 @end

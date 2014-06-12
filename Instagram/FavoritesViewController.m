@@ -10,6 +10,7 @@
 #import "PhotoCollectionViewCell.h"
 #import "Photo.h"
 #import "User.h"
+#import "MyButton.h"
 #import <Parse/Parse.h>
 
 @interface FavoritesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate>
@@ -31,7 +32,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyFavoritesCell" forIndexPath:indexPath];
-    cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row];
+
+    NSArray *comments = [self.imagesArray objectAtIndex:indexPath.row][@"comments"];
+    NSArray *likes = [self.imagesArray objectAtIndex:indexPath.row][@"likes"];
+    NSString *photoId = [self.imagesArray objectAtIndex:indexPath.row][@"id"];
+
+    cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"file"];
+    [cell.commentsButton setTitle:@(comments.count).description forState:UIControlStateNormal];
+    [cell.likesButton setTitle:@(likes.count).description forState:UIControlStateNormal];
+   // [cell.commentsButton setPhotoId:photoId];
+    //cell.likesButton.photoId = photoId;
+
     return cell;
 }
 
@@ -82,7 +93,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self loginUser:@"user3" password:@"password"];
+    [self loginUser:@"user1" password:@"password"];
 //[self signupUser:@"user5" password:@"password" email:@"user5@email.com"];
 
 //    PFUser *user = [PFUser currentUser];
@@ -97,38 +108,43 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
     [query whereKey:@"user" equalTo:user];
+    [query orderByDescending:@"createdAt"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
         for (PFObject *object in photos) {
             if (object[@"photo"]) {
                 PFFile *userImageFile = object[@"photo"];
                 [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        [self.imagesArray addObject:image];
-                        [self.myFavoritesCollectionView reloadData];
-                    }
-                }];
-            }
-            if (object[@"comments"]) {
-                PFRelation *commentsRelation = [object relationForKey:@"comments"];
-                PFQuery *query = [commentsRelation query];
-                [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-                    for (PFObject *comment in results) {
-                        if (comment[@"content"]) {
-                            NSString *commentString = comment[@"content"];
-                        }
-                    }
-                }];
-            }
-            if (object[@"likes"]) {
-                PFRelation *likesRelation = [object relationForKey:@"likes"];
-                PFQuery *query = [likesRelation query];
-                [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-                    for (PFUser *likedUser in results) {
-                        if (likedUser[@"username"]) {
-                            NSString *userName = likedUser[@"username"];
-                        }
+                    NSMutableArray *comments = [NSMutableArray new];
+                    NSMutableArray *likes = [NSMutableArray new];
+                    if (object[@"comments"]) {
+                        PFRelation *commentsRelation = [object relationForKey:@"comments"];
+                        PFQuery *commentsQuery = [commentsRelation query];
+                        [commentsQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                            if (!error) {
+                                 for (PFObject *comment in results) {
+                                     if (comment[@"content"]) {
+                                         [comments addObject:comment[@"content"]];
+                                     }
+                                 }
+                            }
+                            if (object[@"likes"]) {
+                                PFRelation *likesRelation = [object relationForKey:@"likes"];
+                                PFQuery *likesQuery = [likesRelation query];
+                                [likesQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                                    if (!error) {
+                                        for (PFUser *likedUser in results) {
+                                            if (likedUser[@"username"]) {
+                                                [likes addObject:likedUser[@"username"]];
+                                            }
+                                        }
+                                    }
+                                    [self.imagesArray addObject:@{@"file" : [UIImage imageWithData:imageData], @"id" : object.objectId , @"comments": comments, @"likes": likes}];
+                                    [self.myFavoritesCollectionView reloadData];
+
+                                }];
+                            }
+                        }];
                     }
                 }];
             }
@@ -138,11 +154,7 @@
 
 - (void)loadFollowing
 {
-    if (self.imagesArray == nil)
-    {
-        self.imagesArray = [NSMutableArray new];
-    }
-
+    self.imagesArray = [NSMutableArray new];
     PFQuery *query = [PFUser query];
     [query whereKey:@"following" equalTo:[PFUser currentUser]];
 
@@ -178,14 +190,14 @@
     }];
 }
 
-- (IBAction)onCommentButtonPressed:(id)sender
+- (IBAction)onCommentButtonPressed:(MyButton *)sender
 {
-
+    [self commentOnPhoto:sender.photoId];
 }
 
-- (IBAction)onLikeButtonPressed:(id)sender
+- (IBAction)onLikeButtonPressed:(MyButton *)sender
 {
-
+    [self likePhoto:sender.photoId];
 }
 
 @end
