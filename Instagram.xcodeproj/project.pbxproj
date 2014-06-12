@@ -36,6 +36,10 @@
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
 		45EA5D31194952EF00328F3D /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D30194952EF00328F3D /* MyButton.m */; };
+		D0346FD5194A1DDD00C5B81F /* mobilemakers.png in Resources */ = {isa = PBXBuildFile; fileRef = D0346FD4194A1DDD00C5B81F /* mobilemakers.png */; };
+		D0346FD7194A24D000C5B81F /* selectPhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0346FD6194A24D000C5B81F /* selectPhotoIcon.png */; };
+		D0346FD9194A261600C5B81F /* takePhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0346FD8194A261600C5B81F /* takePhotoIcon.png */; };
+		D0346FDB194A26F500C5B81F /* uploadPhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0346FDA194A26F500C5B81F /* uploadPhotoIcon.png */; };
 		D05D5C4C1949FD36002621C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05D5C4B1949FD36002621C2 /* MapViewController.m */; };
 		D07060CE1949F811004F611B /* reloadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D07060CD1949F811004F611B /* reloadButton.png */; };
 		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
@@ -107,6 +111,10 @@
 		45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		45EA5D2F194952EF00328F3D /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
 		45EA5D30194952EF00328F3D /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		D0346FD4194A1DDD00C5B81F /* mobilemakers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilemakers.png; sourceTree = "<group>"; };
+		D0346FD6194A24D000C5B81F /* selectPhotoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoIcon.png; sourceTree = "<group>"; };
+		D0346FD8194A261600C5B81F /* takePhotoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takePhotoIcon.png; sourceTree = "<group>"; };
+		D0346FDA194A26F500C5B81F /* uploadPhotoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uploadPhotoIcon.png; sourceTree = "<group>"; };
 		D05D5C4A1949FD36002621C2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		D05D5C4B1949FD36002621C2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D07060CD1949F811004F611B /* reloadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reloadButton.png; sourceTree = "<group>"; };
@@ -243,13 +251,17 @@
 		4505F9FE193D15330016FC7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0346FD4194A1DDD00C5B81F /* mobilemakers.png */,
 				D07060CD1949F811004F611B /* reloadButton.png */,
 				D0A6D175194982470075EEE1 /* profilePhoto.png */,
 				D0B2F32A1948131300EE05D9 /* commentIcon.png */,
+				D0346FD6194A24D000C5B81F /* selectPhotoIcon.png */,
 				D0A6D1791949838E0075EEE1 /* photoCollectionFeedView.png */,
 				D0B2F3161947A7C100EE05D9 /* friends@2x.png */,
 				D0A6D17B194984040075EEE1 /* photoLocation.png */,
 				D0A6D17D194985D00075EEE1 /* settingsIcon.png */,
+				D0346FDA194A26F500C5B81F /* uploadPhotoIcon.png */,
+				D0346FD8194A261600C5B81F /* takePhotoIcon.png */,
 				D0A6D17F1949860C0075EEE1 /* myTaggedPhotos.png */,
 				D0A6D177194982F40075EEE1 /* photoCollectionGridView.png */,
 				D0B2F32E1948151700EE05D9 /* userProfileIcon.png */,
@@ -363,6 +375,7 @@
 				4505FA02193D15330016FC7F /* InfoPlist.strings in Resources */,
 				D0B2F3291948122300EE05D9 /* notificationIcons.png in Resources */,
 				D0B2F32D1948147200EE05D9 /* likeHeartIcon.png in Resources */,
+				D0346FD5194A1DDD00C5B81F /* mobilemakers.png in Resources */,
 				D0A6D1801949860C0075EEE1 /* myTaggedPhotos.png in Resources */,
 				D0A6D176194982470075EEE1 /* profilePhoto.png in Resources */,
 				D0A6D178194982F40075EEE1 /* photoCollectionGridView.png in Resources */,
@@ -374,6 +387,9 @@
 				D0A64F851948218100762CA8 /* cameraIconInsta.png in Resources */,
 				D07060CE1949F811004F611B /* reloadButton.png in Resources */,
 				D0B2F32F1948151700EE05D9 /* userProfileIcon.png in Resources */,
+				D0346FD9194A261600C5B81F /* takePhotoIcon.png in Resources */,
+				D0346FD7194A24D000C5B81F /* selectPhotoIcon.png in Resources */,
+				D0346FDB194A26F500C5B81F /* uploadPhotoIcon.png in Resources */,
 				D0B2F3151947A7B600EE05D9 /* camera@2x.png in Resources */,
 				D0A6D17C194984040075EEE1 /* photoLocation.png in Resources */,
 			);
