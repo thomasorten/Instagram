@@ -6,44 +6,54 @@
 //  Copyright (c) 2014 Orten, Thomas. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "ViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface MapViewController ()
+@interface MapViewController () <MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
 
 @end
 
-@implementation MapViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation ViewController
 
 - (void)viewDidLoad
+
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	self.mobileMakersAnnotation = [[MKPointAnnotation alloc] init];
+    self.mobileMakersAnnotation.coordinate = CLLocationCoordinate2DMake(41.89373984, -87.63532979);
+    self.mobileMakersAnnotation.title = @"Mobile Makers HQ";
+    [self.mapView addAnnotation:self.mobileMakersAnnotation];
+
+
+
+    self.mapView.showsUserLocation = YES;
 }
 
-- (void)didReceiveMemoryWarning
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+    if (annotation == self.mobileMakersAnnotation)
+    {
+        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+        pin.canShowCallout = YES;
+        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
-/*
-#pragma mark - Navigation
+        if (annotation == self.mobileMakersAnnotation)
+        {
+            pin.image = [UIImage imageNamed:@"mobilemakers"];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+        return pin;
+
+    }
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    CLLocationCoordinate2D centerCoordinate = view.annotation.coordinate;
+    MKCoordinateSpan span = MKCoordinateSpanMake(.01, .01);
+    MKCoordinateRegion region = MKCoordinateRegionMake(centerCoordinate, span);
+    [self.mapView setRegion:region animated:YES];
+    
 }
-*/
-
+    
 @end
