@@ -36,6 +36,8 @@
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
 		45EA5D31194952EF00328F3D /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D30194952EF00328F3D /* MyButton.m */; };
+		45EA5D341949FF9300328F3D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D331949FF9300328F3D /* CommentViewController.m */; };
+		45EA5D38194A1AFA00328F3D /* houseIcon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45EA5D37194A1AFA00328F3D /* houseIcon_2.png */; };
 		D05D5C4C1949FD36002621C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05D5C4B1949FD36002621C2 /* MapViewController.m */; };
 		D07060CE1949F811004F611B /* reloadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D07060CD1949F811004F611B /* reloadButton.png */; };
 		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
@@ -107,6 +109,9 @@
 		45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		45EA5D2F194952EF00328F3D /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
 		45EA5D30194952EF00328F3D /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		45EA5D321949FF9300328F3D /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		45EA5D331949FF9300328F3D /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		45EA5D37194A1AFA00328F3D /* houseIcon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = houseIcon_2.png; sourceTree = "<group>"; };
 		D05D5C4A1949FD36002621C2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		D05D5C4B1949FD36002621C2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D07060CD1949F811004F611B /* reloadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reloadButton.png; sourceTree = "<group>"; };
@@ -222,6 +227,8 @@
 				D08CC38019478E3B009F0DDA /* PhotoViewController.m */,
 				45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */,
 				45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */,
+				45EA5D321949FF9300328F3D /* CommentViewController.h */,
+				45EA5D331949FF9300328F3D /* CommentViewController.m */,
 				4505FA0C193D15330016FC7F /* ViewController.h */,
 				4505FA0D193D15330016FC7F /* ViewController.m */,
 				45EA5D2F194952EF00328F3D /* MyButton.h */,
@@ -243,6 +250,7 @@
 		4505F9FE193D15330016FC7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45EA5D37194A1AFA00328F3D /* houseIcon_2.png */,
 				D07060CD1949F811004F611B /* reloadButton.png */,
 				D0A6D175194982470075EEE1 /* profilePhoto.png */,
 				D0B2F32A1948131300EE05D9 /* commentIcon.png */,
@@ -365,6 +373,7 @@
 				D0B2F32D1948147200EE05D9 /* likeHeartIcon.png in Resources */,
 				D0A6D1801949860C0075EEE1 /* myTaggedPhotos.png in Resources */,
 				D0A6D176194982470075EEE1 /* profilePhoto.png in Resources */,
+				45EA5D38194A1AFA00328F3D /* houseIcon_2.png in Resources */,
 				D0A6D178194982F40075EEE1 /* photoCollectionGridView.png in Resources */,
 				D0A6D17E194985D00075EEE1 /* settingsIcon.png in Resources */,
 				D0B2F32B1948131300EE05D9 /* commentIcon.png in Resources */,
@@ -398,6 +407,7 @@
 				45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */,
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
 				D05D5C4C1949FD36002621C2 /* MapViewController.m in Sources */,
+				45EA5D341949FF9300328F3D /* CommentViewController.m in Sources */,
 				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
 				4550E6281947A31B00A6179D /* Photo.m in Sources */,
