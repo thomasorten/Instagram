@@ -40,8 +40,8 @@
     cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"file"];
     [cell.commentsButton setTitle:@(comments.count).description forState:UIControlStateNormal];
     [cell.likesButton setTitle:@(likes.count).description forState:UIControlStateNormal];
-   // [cell.commentsButton setPhotoId:photoId];
-    //cell.likesButton.photoId = photoId;
+    cell.commentsButton.photoId = photoId;
+    cell.likesButton.photoId = photoId;
 
     return cell;
 }

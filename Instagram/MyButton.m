@@ -10,6 +10,8 @@
 
 @implementation MyButton
 
+@synthesize photoId;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyButton : UIButton
-@property (nonatomic, strong) NSString *photoId;
+@property NSString *photoId;
 @end
