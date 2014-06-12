@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-eZ-0HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="-533"/>
+            <point key="canvasLocation" x="1629" y="-554"/>
         </scene>
         <!--Notification View Controller - Notifications-->
         <scene sceneID="tgB-P0-tNj">
@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="1670" y="170"/>
         </scene>
-        <!--View Controller - Profile-->
+        <!--User Profile View Controller-->
         <scene sceneID="EWB-TC-7oS">
             <objects>
-                <viewController id="Zaf-hC-MZE" sceneMemberID="viewController">
+                <viewController id="Zaf-hC-MZE" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m7k-UD-nDz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -255,6 +255,9 @@
                                 <state key="normal" image="photoLocation.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="f7U-Od-qFT" kind="push" id="uxy-a8-qRW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vEl-Xh-VnX">
                                 <rect key="frame" x="230" y="226" width="58" height="44"/>
@@ -349,34 +352,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="userProfileIcon.png" id="kpe-QM-orx">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="qXt-7q-WEr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oh-b8-29r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="884"/>
+            <point key="canvasLocation" x="2196" y="884"/>
         </scene>
         <!--Map View Controller-->
-        <scene sceneID="y8l-jv-P5C">
+        <scene sceneID="P8c-VR-Hp6">
             <objects>
-                <viewController id="zhf-1g-ESr" customClass="MapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KM0-D4-XXP">
+                <viewController id="f7U-Od-qFT" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TZg-br-lpb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="UpN-0N-Uqy">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="4aD-Lr-LWO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rpF-tk-0k9"/>
+                    <navigationItem key="navigationItem" id="BVu-gJ-QBj"/>
+                    <connections>
+                        <outlet property="mapView" destination="4aD-Lr-LWO" id="gj4-ll-bs0"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QLS-pg-lE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edh-Pz-MBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="884"/>
+            <point key="canvasLocation" x="2666" y="884"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="o8W-x4-m5H">
@@ -399,7 +403,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Zaf-hC-MZE" kind="modal" id="C7S-Mc-JZ1"/>
+                                            <segue destination="DAt-5A-5UC" kind="modal" id="C7S-Mc-JZ1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -443,7 +447,7 @@
                                         <connections>
                                             <outlet property="checkMarkButton" destination="mjG-cz-ErS" id="E3a-lN-SS5"/>
                                             <outlet property="theImageView" destination="PG5-Yr-N3K" id="YpR-db-jX4"/>
-                                            <segue destination="Zaf-hC-MZE" kind="modal" id="tmz-sI-K9t"/>
+                                            <segue destination="DAt-5A-5UC" kind="modal" id="tmz-sI-K9t"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -503,12 +507,33 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="j9V-Jq-x9t"/>
                         <segue destination="ozI-1o-g21" kind="relationship" relationship="viewControllers" id="64C-b6-ETP"/>
                         <segue destination="xzF-Xz-YWR" kind="relationship" relationship="viewControllers" id="Y9K-xD-EIf"/>
-                        <segue destination="Zaf-hC-MZE" kind="relationship" relationship="viewControllers" id="Phm-Q0-VHF"/>
+                        <segue destination="DAt-5A-5UC" kind="relationship" relationship="viewControllers" id="Phm-Q0-VHF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUb-W2-2lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="743" y="175"/>
+        </scene>
+        <!--Navigation Controller - Profile-->
+        <scene sceneID="Qo5-ss-Mgd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DAt-5A-5UC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="userProfileIcon.png" id="kpe-QM-orx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOb-SG-jw6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zaf-hC-MZE" kind="relationship" relationship="rootViewController" id="3Fe-34-ieZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FOm-ht-Qij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1670" y="884"/>
         </scene>
     </scenes>
     <resources>
