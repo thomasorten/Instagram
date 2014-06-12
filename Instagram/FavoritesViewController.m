@@ -11,10 +11,11 @@
 #import "Photo.h"
 #import "User.h"
 #import "MyButton.h"
+#import "CommentViewController.h"
 #import <Parse/Parse.h>
 
 @interface FavoritesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UITabBarDelegate, UISearchBarDelegate>
-
+@property NSString *selectedPhotoId;
 @end
 
 @implementation FavoritesViewController
@@ -36,9 +37,16 @@
     NSArray *comments = [self.imagesArray objectAtIndex:indexPath.row][@"comments"];
     NSArray *likes = [self.imagesArray objectAtIndex:indexPath.row][@"likes"];
     NSString *photoId = [self.imagesArray objectAtIndex:indexPath.row][@"id"];
+    NSString *firstComment = @"0";
 
+    if (comments.count > 0) {
+        firstComment = [comments firstObject];
+    }
+
+    cell.profileImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"profilePhoto"];
     cell.selectedImageView.image = [self.imagesArray objectAtIndex:indexPath.row][@"file"];
-    [cell.commentsButton setTitle:@(comments.count).description forState:UIControlStateNormal];
+    cell.userNameLabel.text = [self.imagesArray objectAtIndex:indexPath.row][@"username"];
+    [cell.commentsButton setTitle:firstComment forState:UIControlStateNormal];
     [cell.likesButton setTitle:@(likes.count).description forState:UIControlStateNormal];
     cell.commentThisButton.photoId = photoId;
     cell.likeThisButton.photoId = photoId;
@@ -46,19 +54,6 @@
     cell.commentsButton.photoId = photoId;
 
     return cell;
-}
-
-- (void)commentOnPhoto:(NSString *)photoId
-{
-    PFObject *comment = [PFObject objectWithClassName:@"Comment"];
-    comment[@"content"] = @"This is awesome";
-    comment[@"user"] = [PFUser currentUser];
-    [comment save];
-
-    PFObject *currentImage = [PFObject objectWithoutDataWithClassName:@"Photo" objectId:photoId];
-    PFRelation *comments = [currentImage relationforKey:@"comments"];
-    [comments addObject:comment];
-    [currentImage saveInBackground];
 }
 
 - (void)followUser:(NSString *)username
@@ -110,6 +105,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
     [query whereKey:@"user" equalTo:user];
+    [query includeKey:@"user"];
     [query orderByDescending:@"createdAt"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
@@ -119,6 +115,7 @@
                 [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
                     NSMutableArray *comments = [NSMutableArray new];
                     NSMutableArray *likes = [NSMutableArray new];
+                    UIImage *profilePhoto = [[UIImage alloc] init];
                     if (object[@"comments"]) {
                         PFRelation *commentsRelation = [object relationForKey:@"comments"];
                         PFQuery *commentsQuery = [commentsRelation query];
@@ -141,9 +138,15 @@
                                             }
                                         }
                                     }
-                                    [self.imagesArray addObject:@{@"file" : [UIImage imageWithData:imageData], @"id" : object.objectId , @"comments": comments, @"likes": likes}];
-                                    [self.myFavoritesCollectionView reloadData];
-
+                                    PFFile *userImageFile = object[@"user"][@"image"];
+                                    if (userImageFile) {
+                                        [userImageFile getDataInBackgroundWithBlock:^(NSData *profileData, NSError *error) {
+                                            [self.imagesArray addObject:@{@"file" : [UIImage imageWithData:imageData], @"id" : object.objectId , @"comments": comments, @"likes": likes, @"username" : object[@"user"][@"username"], @"profilePhoto" :  [UIImage imageWithData:profileData]}];
+                                            [self.myFavoritesCollectionView reloadData];
+                                        }];
+                                    } else {
+                                        [self.imagesArray addObject:@{@"file" : [UIImage imageWithData:imageData], @"id" : object.objectId , @"comments": comments, @"likes": likes, @"username" : object[@"user"][@"username"]}];
+                                    }
                                 }];
                             }
                         }];
@@ -192,9 +195,18 @@
     }];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"CommentSegue"]) {
+        CommentViewController *vc = segue.destinationViewController;
+        vc.photoId = self.selectedPhotoId;
+    }
+}
+
 - (IBAction)onCommentButtonPressed:(MyButton *)sender
 {
-    [self commentOnPhoto:sender.photoId];
+    self.selectedPhotoId = sender.photoId;
+    [self performSegueWithIdentifier: @"CommentSegue" sender: self];
 }
 
 - (IBAction)onLikeButtonPressed:(MyButton *)sender

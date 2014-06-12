@@ -36,6 +36,7 @@
 		45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1B193D2C50005DEEA2 /* PhotoCollectionViewCell.m */; };
 		45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */; };
 		45EA5D31194952EF00328F3D /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D30194952EF00328F3D /* MyButton.m */; };
+		45EA5D341949FF9300328F3D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EA5D331949FF9300328F3D /* CommentViewController.m */; };
 		D07060CE1949F811004F611B /* reloadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D07060CD1949F811004F611B /* reloadButton.png */; };
 		D08CC38119478E3B009F0DDA /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CC38019478E3B009F0DDA /* PhotoViewController.m */; };
 		D0A64F851948218100762CA8 /* cameraIconInsta.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A64F841948218100762CA8 /* cameraIconInsta.png */; };
@@ -107,6 +108,8 @@
 		45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		45EA5D2F194952EF00328F3D /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
 		45EA5D30194952EF00328F3D /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		45EA5D321949FF9300328F3D /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		45EA5D331949FF9300328F3D /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		D07060CD1949F811004F611B /* reloadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reloadButton.png; sourceTree = "<group>"; };
 		D08CC37F19478E3B009F0DDA /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		D08CC38019478E3B009F0DDA /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				D08CC38019478E3B009F0DDA /* PhotoViewController.m */,
 				45D74E1D193D3433005DEEA2 /* FavoritesViewController.h */,
 				45D74E1E193D3433005DEEA2 /* FavoritesViewController.m */,
+				45EA5D321949FF9300328F3D /* CommentViewController.h */,
+				45EA5D331949FF9300328F3D /* CommentViewController.m */,
 				4505FA0C193D15330016FC7F /* ViewController.h */,
 				4505FA0D193D15330016FC7F /* ViewController.m */,
 				D0A6D1831949890B0075EEE1 /* MapViewController.h */,
@@ -398,6 +403,7 @@
 				45D74E1F193D3433005DEEA2 /* FavoritesViewController.m in Sources */,
 				4505FA0E193D15330016FC7F /* ViewController.m in Sources */,
 				D0A6D1851949890B0075EEE1 /* MapViewController.m in Sources */,
+				45EA5D341949FF9300328F3D /* CommentViewController.m in Sources */,
 				4550E62519478E9000A6179D /* User.m in Sources */,
 				45D74E1C193D2C50005DEEA2 /* PhotoCollectionViewCell.m in Sources */,
 				4550E6281947A31B00A6179D /* Photo.m in Sources */,
