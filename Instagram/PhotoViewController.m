@@ -42,37 +42,8 @@
     [PFUser logInWithUsernameInBackground:username password:password
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
-                                            [self load];
-                                            //[self loadUserPhotos];
                                         }
                                     }];
-}
-
-- (void)load
-{
-    FavoritesViewController *fc = [[FavoritesViewController alloc] init];
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        if (!fc.imagesArray)
-        {
-            fc.imagesArray = [NSMutableArray array];
-        }
-        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            for (PFObject *object in objects) {
-                PFFile *userImageFile = object[@"photo"];
-                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        [fc.imagesArray addObject:image];
-                        [fc.myFavoritesCollectionView reloadData];
-                    }
-                }];
-            }
-        }];
-    } else {
-
-    }
 }
 
 - (IBAction)doneWithCaption:(id)sender

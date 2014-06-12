@@ -19,13 +19,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (IBAction)onCommentPressed:(id)sender
 {
     PFObject *comment = [PFObject objectWithClassName:@"Comment"];
-    comment[@"content"] = @"This is awesome";
+    comment[@"content"] = self.commentTextField.text;
     comment[@"user"] = [PFUser currentUser];
 
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -46,6 +48,10 @@
 - (IBAction)onCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)dismissKeyboard {
+    [self.commentTextField resignFirstResponder];
 }
 
 @end
