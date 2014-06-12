@@ -91,7 +91,9 @@
                                             <outlet property="commentsButton" destination="zYL-EM-3Vg" id="oXK-EM-OT8"/>
                                             <outlet property="likeThisButton" destination="uFt-Cl-SpL" id="67d-qD-fCR"/>
                                             <outlet property="likesButton" destination="2pf-dq-NAH" id="Mgw-Uu-aBI"/>
+                                            <outlet property="profileImageView" destination="RQe-Hb-B9E" id="2H0-co-vqi"/>
                                             <outlet property="selectedImageView" destination="BmI-zk-NVw" id="RqU-YE-Zqo"/>
+                                            <outlet property="userNameLabel" destination="yQh-0M-4UG" id="QdZ-0F-Xgy"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -358,7 +360,6 @@
         <!--Map View Controller-->
         <scene sceneID="y8l-jv-P5C">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QLS-pg-lE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zhf-1g-ESr" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KM0-D4-XXP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -373,6 +374,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rpF-tk-0k9"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QLS-pg-lE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2146" y="884"/>
         </scene>
@@ -396,6 +398,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Zaf-hC-MZE" kind="modal" id="C7S-Mc-JZ1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -438,6 +443,7 @@
                                         <connections>
                                             <outlet property="checkMarkButton" destination="mjG-cz-ErS" id="E3a-lN-SS5"/>
                                             <outlet property="theImageView" destination="PG5-Yr-N3K" id="YpR-db-jX4"/>
+                                            <segue destination="Zaf-hC-MZE" kind="modal" id="tmz-sI-K9t"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -522,4 +528,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="tmz-sI-K9t"/>
+    </inferredMetricsTieBreakers>
 </document>

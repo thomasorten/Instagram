@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet MyButton *likeThisButton;
 @property (weak, nonatomic) IBOutlet MyButton *commentThisButton;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
