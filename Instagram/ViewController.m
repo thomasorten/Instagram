@@ -189,6 +189,8 @@
 
 - (IBAction)onSearchReload:(id)sender
 {
+    self.myTableView.hidden = YES;
+    [self.myCollectionView reloadData];
 
 }
 
